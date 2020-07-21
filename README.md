@@ -12,6 +12,7 @@ ext install canonicalclasscpp
 ```
 
 ## Usage
+
 ### Insert a header
  - **macOS** : <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd>
  - **Linux** / **Windows** : <kbd>Ctrl</kbd> + <kbd>alt</kbd> + <kbd>C</kbd>.

@@ -12,6 +12,8 @@
 	"bugs": {
 		"url": "https://github.com/Etheram68/Header-Cpp-Class/issues"
 	},
+	"homepage": "https://github.com/Etheram68/Header-Cpp-Class",
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
