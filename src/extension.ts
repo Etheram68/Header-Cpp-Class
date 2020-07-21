@@ -1,23 +1,74 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "autoclasscpp" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+	let disposable = vscode.commands.registerCommand('canonicalclass.makeclass', async function (){
+		let name = await vscode.window.showInputBox({
+			prompt: "Enter your Class Name",
+			validateInput: (text: string): string | undefined => {
+				if (!text){
+					return 'You must enter a name';
+				} else {
+					return undefined;
+				}
+			}
+		})
+		if (name !== undefined){
+			name = name.charAt(0).toUpperCase() + name.slice(1)
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
+			const wsedit = new vscode.WorkspaceEdit();
+			const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
+
+			const filePathCpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.cpp');
+			const filePathHpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.hpp');
+
+			wsedit.createFile(filePathCpp, { ignoreIfExists: true });
+			wsedit.createFile(filePathHpp, { ignoreIfExists: true });
+
+			vscode.workspace.applyEdit(wsedit);
+
+			let len = name.length;
+			len += 23;
+			len = 80 - len - 1
+			let star = "*"
+			for (; len > 0; len--)
+			{
+				star += "*"
+			}
+
+			let classcpp =  "#include \"" + name + ".Class" + ".hpp\"\n\n" +
+							name + "::" + name + "() {}\n\n" +
+							name + "::" + name + "( const " + name + " & object ) {}\n\n" +
+							name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
+							name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	return (*this);\n}\n\n";
+
+			let classhpp =	"#ifndef " + name.toUpperCase() + "_CLASS" + "_HPP\n" +
+							"#define " + name.toUpperCase() + "_CLASS" + "_HPP\n\n" +
+							"#include <iostream>\n\n" +
+							"class " + name + "\n{\n" +
+							"\n" +
+							"	public:\n" +
+							"\n" +
+							"		" + name + "();\n" +
+							"		" + name + "( " + name + " const & src );\n" +
+							"		~" + name + "();\n" +
+							"\n" +
+							"		" + name + " &		operator=( " + name + " const & rhs );"+
+							"\n\n" +
+							"	private:\n" +
+							"\n" +
+							"};\n\n" +
+							"#endif /* *" + star + " " + name.toUpperCase() + "_CLASS_H */";
+			fs.writeFile(filePathCpp.fsPath, classcpp, function (err: any) { if (err) return console.log(err); });
+			fs.writeFile(filePathHpp.fsPath, classhpp, function (err: any) { if (err) return console.log(err); });
+			vscode.window.showInformationMessage("Files : " + name + ".cpp, " + name + ".hpp created !");
+		}
 	});
 
 	context.subscriptions.push(disposable);

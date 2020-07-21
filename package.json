@@ -2,8 +2,8 @@
 	"name": "canonicalclasscpp",
 	"displayName": "Canonical Class CPP",
 	"description": "This extension is to automatically create a canonical hpp and cpp file",
-	"version": "0.0.1",
-	"publisher": "frfrey",
+	"version": "0.0.2",
+	"publisher": "Testextensionfrfrey",
 	"icon": "cpp.jpg",
 	"repository": {
 		"type": "git",
@@ -19,7 +19,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:canonicalclass.makeclass"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -32,7 +32,8 @@
 		"keybindings":[
 			{
 				"command": "canonicalclass.makeclass",
-				"key": "ctrl+shift+c"
+				"key": "ctrl+alt+c",
+				"mac": "cmd+alt+c"
 			}
 		]
 	},
