@@ -18,7 +18,7 @@ ext install canonicalclasscpp
 
 <img
  src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/exemple_name.png"
- >
+ width=680>
 ## Issues
 
 To report a bug or ask for a feature, please open a [Github issue](https://github.com/Etheram68/Header-Cpp-Class/issues).
