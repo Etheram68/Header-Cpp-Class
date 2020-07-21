@@ -43,7 +43,10 @@ export function activate(context: vscode.ExtensionContext) {
 							name + "::" + name + "() {}\n\n" +
 							name + "::" + name + "( const " + name + " & object ) {}\n\n" +
 							name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
-							name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	return (*this);\n}\n\n";
+							name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	return *this;\n}\n\n" +
+							"std::ostream &		operator<<( std::ostream & o, " + name + " const & i )\n" +
+							"{\n	o << \"Value\" << i.get();\n	return o;\n}\n\n" +
+							"\n/* ************************************************************************** */";
 
 			let classhpp =	"#ifndef " + name.toUpperCase() + "_CLASS" + "_HPP\n" +
 							"# define " + name.toUpperCase() + "_CLASS" + "_HPP\n\n" +
@@ -61,6 +64,9 @@ export function activate(context: vscode.ExtensionContext) {
 							"	private:\n" +
 							"\n" +
 							"};\n\n" +
+							"\n" +
+							"std::ostream &		operator<<( std::ostream & o, " + name + " const & i );"+
+							"\n\n" +
 							"#endif /* *" + star + " " + name.toUpperCase() + "_CLASS_H */";
 			fs.writeFile(filePathCpp.fsPath, classcpp, function (err: any) { if (err) return console.log(err); });
 			fs.writeFile(filePathHpp.fsPath, classhpp, function (err: any) { if (err) return console.log(err); });

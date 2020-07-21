@@ -2,7 +2,7 @@
 	"name": "canonicalclasscpp",
 	"displayName": "Canonical Class CPP",
 	"description": "This extension is to automatically create a canonical hpp and cpp file",
-	"version": "0.1.1",
+	"version": "0.1.4",
 	"publisher": "frfreyCanonicalClassCPP",
 	"icon": "42.png",
 	"repository": {
