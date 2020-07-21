@@ -46,8 +46,8 @@ export function activate(context: vscode.ExtensionContext) {
 							name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	return (*this);\n}\n\n";
 
 			let classhpp =	"#ifndef " + name.toUpperCase() + "_CLASS" + "_HPP\n" +
-							"#define " + name.toUpperCase() + "_CLASS" + "_HPP\n\n" +
-							"#include <iostream>\n\n" +
+							"# define " + name.toUpperCase() + "_CLASS" + "_HPP\n\n" +
+							"# include <iostream>\n\n" +
 							"class " + name + "\n{\n" +
 							"\n" +
 							"	public:\n" +
@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
 							"#endif /* *" + star + " " + name.toUpperCase() + "_CLASS_H */";
 			fs.writeFile(filePathCpp.fsPath, classcpp, function (err: any) { if (err) return console.log(err); });
 			fs.writeFile(filePathHpp.fsPath, classhpp, function (err: any) { if (err) return console.log(err); });
-			vscode.window.showInformationMessage("Files : " + name + ".cpp, " + name + ".hpp created !");
+			vscode.window.showInformationMessage("Files : " + name + ".class.cpp, " + name + ".class.hpp created !");
 		}
 	});
 
