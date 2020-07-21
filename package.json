@@ -1,8 +1,17 @@
 {
-	"name": "autoclasscpp",
-	"displayName": "AutoClassCPP",
-	"description": "This is for auto creat class on cpp",
+	"name": "canonicalclasscpp",
+	"displayName": "Canonical Class CPP",
+	"description": "This extension is to automatically create a canonical hpp and cpp file",
 	"version": "0.0.1",
+	"publisher": "frfrey",
+	"icon": "cpp.jpg",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Etheram68/Header-Cpp-Class"
+	},
+	"bugs": {
+		"url": "https://github.com/Etheram68/Header-Cpp-Class/issues"
+	},
 	"engines": {
 		"vscode": "^1.47.0"
 	},
@@ -16,8 +25,14 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "canonicalclass.makeclass",
+				"title": "Make canonical class"
+			}
+		],
+		"keybindings":[
+			{
+				"command": "canonicalclass.makeclass",
+				"key": "ctrl+shift+c"
 			}
 		]
 	},
