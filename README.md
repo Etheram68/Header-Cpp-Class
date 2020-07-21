@@ -14,8 +14,11 @@ ext install canonicalclasscpp
 ## Usage
 ### Insert a header
  - **macOS** : <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd>
- - **Linux** / **Windows** : <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
+ - **Linux** / **Windows** : <kbd>Ctrl</kbd> + <kbd>alt</kbd> + <kbd>C</kbd>.
 
+<img
+ src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/exemple_name.png"
+ width=128>
 ## Issues
 
 To report a bug or ask for a feature, please open a [Github issue](https://github.com/Etheram68/Header-Cpp-Class/issues).
