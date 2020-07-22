@@ -29,5 +29,8 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+### 0.1.7
+Add multi posibiliter choice for create a class
+
 ### 0.1.6
 First Version of Auto Create canonical Class for the Cpp language
