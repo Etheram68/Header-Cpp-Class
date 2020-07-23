@@ -29,6 +29,9 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+### 0.2.0
+Add function for adding header on file
+
 ### 0.1.9
 Remove multi choice for working in
 

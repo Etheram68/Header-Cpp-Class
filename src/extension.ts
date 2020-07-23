@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 import { window, commands, ExtensionContext } from 'vscode';
-import { createQuickClass, createClass } from './basicInput';
+import { createQuickClass } from './basicInput';
 
 export function activate(context: ExtensionContext) {
-	context.subscriptions.push(commands.registerCommand('canonicalclass.makeclass', async () => {
+	context.subscriptions.push(commands.registerCommand('canonicalclass.makeclass', () => {
 		/*const options: { [key: string]: (context: ExtensionContext) => Promise<void> } = {
 			createQuickClass,
 			createClass,

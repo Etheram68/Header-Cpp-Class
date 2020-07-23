@@ -11,10 +11,13 @@
 /* ************************************************************************** */
 
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 
 import { getTemplate, getTemplateFull } from './template';
+import { getHeadercpp, getHeaderhpp } from './header';
 
 export async function createQuickClass() {
+
 	let name = await vscode.window.showInputBox({
 		prompt: "Enter your Class Name",
 		placeHolder: "ClassName",
@@ -26,6 +29,7 @@ export async function createQuickClass() {
 			}
 		}
 	});
+
 	if (name !== undefined){
 		name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
 
@@ -43,37 +47,11 @@ export async function createQuickClass() {
 		vscode.workspace.applyEdit(wsedit);
 
 		getTemplate( name, filePathCpp, filePathHpp );
-		if (command && command.length > 0)
-		{
-			vscode.workspace.openTextDocument(filePathCpp.path).then((a: vscode.TextDocument) => {
-				vscode.window.showTextDocument(a, 1, false).then( e => {
-					e.edit(() => {
-						vscode.commands.executeCommand(command).then(() => {})
-					});
-				});
-			}, (err: any) => {
-				vscode.window.showErrorMessage("Header Cpp Class: " + err.message);
-			});
-			vscode.workspace.onDidSaveTextDocument;
-			vscode.workspace.onDidCloseTextDocument;
-		}
-		if (command && command.length > 0)
-		{
-			vscode.workspace.openTextDocument(filePathHpp.path).then((a: vscode.TextDocument) => {
-				vscode.window.showTextDocument(a, 1, false).then( e => {
-					e.edit(edit => {
-						vscode.commands.executeCommand(command).then(() => {})
-					});
-				});
-			}, (err: any) => {
-				vscode.window.showErrorMessage("Header Cpp Class: " + err.message);
-			});
-			vscode.workspace.onDidSaveTextDocument;
-			vscode.workspace.onDidCloseTextDocument;
-		}
+		await getHeadercpp( command, filePathCpp );
+		await getHeaderhpp( command, filePathHpp );
 	}
 }
-
+/*
 export async function createClass() {
 	let name = await vscode.window.showInputBox({
 		prompt: "Enter your Class Name",
@@ -141,3 +119,4 @@ export async function createClass() {
 		getTemplateFull( name, filePathCpp, filePathHpp, valueArray, typeArray )
 	}
 }
+*/
