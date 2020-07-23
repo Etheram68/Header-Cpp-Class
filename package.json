@@ -31,7 +31,6 @@
 					"title": "Header ID",
 					"type": "string",
 					"scope": "window",
-					"default": "101header.insertHeader",
 					"description": "The id of the command to execute at the creation of the skeleton (example: 42header.insertHeader). CAREFUL: this will actually EXECUTE the command and unknown commands will result in no skeleton creations! Leave it to blank for no command to execute"
 				}
 			}
