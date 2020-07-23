@@ -29,6 +29,9 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+### 0.1.9
+Remove multi choice for working in
+
 ### 0.1.7
 Add multi posibiliter choice for create a class
 

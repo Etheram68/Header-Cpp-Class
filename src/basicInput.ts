@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 import * as vscode from 'vscode';
+
 import { getTemplate, getTemplateFull } from './template';
 
 export async function createQuickClass() {
@@ -34,12 +35,42 @@ export async function createQuickClass() {
 		const filePathCpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.cpp');
 		const filePathHpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.hpp');
 
+		let command = (vscode.workspace.getConfiguration().get('headercppclass.headerId') as string).trim();
+
 		wsedit.createFile(filePathCpp, { ignoreIfExists: true });
 		wsedit.createFile(filePathHpp, { ignoreIfExists: true });
 
 		vscode.workspace.applyEdit(wsedit);
 
-		getTemplate( name, filePathCpp, filePathHpp )
+		getTemplate( name, filePathCpp, filePathHpp );
+		if (command && command.length > 0)
+		{
+			vscode.workspace.openTextDocument(filePathCpp.path).then((a: vscode.TextDocument) => {
+				vscode.window.showTextDocument(a, 1, false).then( e => {
+					e.edit(() => {
+						vscode.commands.executeCommand(command).then(() => {})
+					});
+				});
+			}, (err: any) => {
+				vscode.window.showErrorMessage("Header Cpp Class: " + err.message);
+			});
+			vscode.workspace.onDidSaveTextDocument;
+			vscode.workspace.onDidCloseTextDocument;
+		}
+		if (command && command.length > 0)
+		{
+			vscode.workspace.openTextDocument(filePathHpp.path).then((a: vscode.TextDocument) => {
+				vscode.window.showTextDocument(a, 1, false).then( e => {
+					e.edit(edit => {
+						vscode.commands.executeCommand(command).then(() => {})
+					});
+				});
+			}, (err: any) => {
+				vscode.window.showErrorMessage("Header Cpp Class: " + err.message);
+			});
+			vscode.workspace.onDidSaveTextDocument;
+			vscode.workspace.onDidCloseTextDocument;
+		}
 	}
 }
 

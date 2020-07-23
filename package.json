@@ -2,7 +2,7 @@
 	"name": "canonicalclasscpp",
 	"displayName": "42 Canonical Class CPP",
 	"description": "This extension is to automatically create a canonical hpp and cpp file",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"publisher": "frfreyCanonicalClassCPP",
 	"icon": "42.png",
 	"repository": {
@@ -25,6 +25,17 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": {
+			"properties": {
+				"headercppclass.headerId": {
+					"title": "Header ID",
+					"type": "string",
+					"scope": "window",
+					"default": "101header.insertHeader",
+					"description": "The id of the command to execute at the creation of the skeleton (example: 42header.insertHeader). CAREFUL: this will actually EXECUTE the command and unknown commands will result in no skeleton creations! Leave it to blank for no command to execute"
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "canonicalclass.makeclass",

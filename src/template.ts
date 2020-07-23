@@ -13,7 +13,9 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 
-export const getTemplate = ( name: string, filePathCpp: vscode.Uri , filePathHpp: vscode.Uri  ) => {
+export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri , filePathHpp: vscode.Uri  ) => {
+	if (name)
+	{
 		let len = name.length;
 		len += 23;
 		len = 80 - len - 1
@@ -58,6 +60,7 @@ export const getTemplate = ( name: string, filePathCpp: vscode.Uri , filePathHpp
 		fs.writeFile(filePathHpp.fsPath, classhpp, function (err: any) { if (err) return console.log(err); });
 
 		vscode.window.showInformationMessage("Files : " + name + ".class.cpp, " + name + ".class.hpp created !");
+	}
 }
 
 
