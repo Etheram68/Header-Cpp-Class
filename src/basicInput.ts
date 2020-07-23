@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 import * as vscode from 'vscode';
-import { getTemplate } from './template';
+import { getTemplate, getTemplateFull } from './template';
 
 export async function createQuickClass() {
 	let name = await vscode.window.showInputBox({
@@ -39,7 +39,7 @@ export async function createQuickClass() {
 
 		vscode.workspace.applyEdit(wsedit);
 
-		getTemplate(name, filePathCpp, filePathHpp )
+		getTemplate( name, filePathCpp, filePathHpp )
 	}
 }
 
@@ -55,8 +55,46 @@ export async function createClass() {
 			}
 		}
 	});
+
+	let value1: string | undefined;
+	let value2: string | undefined;
+	let value3: string | undefined;
+	let valueArray = [];
+	let typeArray = [];
+
+	for ( ; value1 !== 'exit' || !value1; )
+	{
+		value1 = await vscode.window.showInputBox({
+			prompt: "Enter your Type Name, (Press 'exit' for leave.)",
+			placeHolder: "Type",
+			validateInput: (text: string): string | undefined => {
+				if (!text){
+					return 'You must enter a Type or Press \'exit\' if finish';
+				} else {
+					return undefined;
+				}
+			}
+		})
+		if (value1 != 'exit')
+			value2 = await vscode.window.showInputBox({
+				prompt: "Enter your variable Name",
+				placeHolder: "Variable Name",
+				validateInput: (text: string): string | undefined => {
+					if (!text){
+						return 'You must enter a Variable';
+					} else {
+						return undefined;
+					}
+				}
+			})
+		if (value1 !== 'exit')
+		{
+			typeArray.push(value1?.toLowerCase());
+			valueArray.push(value2?.toLowerCase());
+		}
+	}
 	if (name !== undefined){
-		name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase
+		name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
 
 		const wsedit = new vscode.WorkspaceEdit();
 		const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
@@ -69,6 +107,6 @@ export async function createClass() {
 
 		vscode.workspace.applyEdit(wsedit);
 
-		getTemplate(name, filePathCpp, filePathHpp )
+		getTemplateFull( name, filePathCpp, filePathHpp, valueArray, typeArray )
 	}
 }

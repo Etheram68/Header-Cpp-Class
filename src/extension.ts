@@ -15,7 +15,7 @@ import { createQuickClass, createClass } from './basicInput';
 
 export function activate(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('canonicalclass.makeclass', async () => {
-		const options: { [key: string]: (context: ExtensionContext) => Promise<void> } = {
+		/*const options: { [key: string]: (context: ExtensionContext) => Promise<void> } = {
 			createQuickClass,
 			createClass,
 		};
@@ -23,12 +23,12 @@ export function activate(context: ExtensionContext) {
 		quickPick.items = Object.keys(options).map(label => ({ label }));
 		quickPick.onDidChangeSelection(selection => {
 			if (selection[0]) {
-				options[selection[0].label](context)
-					.catch(console.error);
+				options[selection[0].label](context).catch(console.error);
 			}
 		});
 		quickPick.onDidHide(() => quickPick.dispose());
-		quickPick.show();
+		quickPick.show();*/
+		createQuickClass();
 	}));
 }
 
