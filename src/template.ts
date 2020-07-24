@@ -26,8 +26,11 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 		}
 
 		let classcpp =  "#include \"" + name + ".Class" + ".hpp\"\n\n" +
-						name + "::" + name + "()\n{\n}\n\n" +
-						name + "::" + name + "( const " + name + " & object )\n{\n}\n\n" +
+						name + "::" + name + "()\n{\n	std::cout << \"Default constructor called\"" +
+						" << std::endl;\n}\n\n" +
+						name + "::" + name + "( const " + name + " & src )\n{\n" +
+						"	std::cout << \"Copy constructor called\" << std::endl;\n" +
+						"	*this = src;\n}\n\n" +
 						name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
 						name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	//if ( this != &rhs )\n" +
 						"		//this->_value = rhs.getValue();\n" +

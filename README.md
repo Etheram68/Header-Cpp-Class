@@ -39,6 +39,9 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+### 0.2.1 / 0.2.2
+Add gif Tuto, and modify template
+
 ### 0.2.0
 Add function for adding header on file
 
