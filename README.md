@@ -25,7 +25,7 @@ Enter the Class Name
 
  <img
  src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/gif1.gif"
- width=680>
+ >
 
 ## Issues
 
