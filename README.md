@@ -24,8 +24,8 @@ Enter the Class Name
  width=680>
 
  <img
- src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/gif1.gif"
- >
+ src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/tuto1.gif"
+ width=680>
 
 ## Issues
 
