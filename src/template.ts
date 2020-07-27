@@ -25,18 +25,22 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 			star += "*"
 		}
 
-		let classcpp =  "#include \"" + name + ".Class" + ".hpp\"\n\n" +
+		let classcpp =  "#include \"" + name + ".Class" + ".hpp\"\n" +
+						"\n/*\n * ------------------------------- CONSTRUCTOR --------------------------------\n */\n\n" +
 						name + "::" + name + "()\n{\n	std::cout << \"Default constructor called\"" +
 						" << std::endl;\n}\n\n" +
 						name + "::" + name + "( const " + name + " & src )\n{\n" +
 						"	std::cout << \"Copy constructor called\" << std::endl;\n" +
 						"	*this = src;\n}\n\n" +
+						"\n/*\n * -------------------------------- DESTRUCTOR --------------------------------\n */\n\n" +
 						name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
+						"\n/*\n * --------------------------------- OVERLOAD ---------------------------------\n */\n\n" +
 						name + " &				" + name + "::operator=( " + name + " const & rhs )\n{\n	//if ( this != &rhs )\n" +
 						"		//this->_value = rhs.getValue();\n" +
 						"	return *this;\n}\n\n" +
 						"std::ostream &		operator<<( std::ostream & o, " + name + " const & i )\n" +
 						"{\n	//o << \"Value = \" << i.getValue();\n	return o;\n}\n\n" +
+						"\n/*\n * --------------------------------- METHODS --------------------------------- \n */\n\n" +
 						"\n/* ************************************************************************** */";
 
 		let classhpp =	"#ifndef " + name.toUpperCase() + "_CLASS" + "_HPP\n" +

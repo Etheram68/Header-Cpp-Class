@@ -39,7 +39,7 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
-### 0.2.3
+### 0.2.3 / 0.2.4
 Modify template for align call function on cpp file
 
 ### 0.2.1 / 0.2.2
