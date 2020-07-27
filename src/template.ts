@@ -32,7 +32,7 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 						"	std::cout << \"Copy constructor called\" << std::endl;\n" +
 						"	*this = src;\n}\n\n" +
 						name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
-						name + " &		" + name + "::operator=( " + name + " const & rhs )\n{\n	//if ( this != &rhs )\n" +
+						name + " &				" + name + "::operator=( " + name + " const & rhs )\n{\n	//if ( this != &rhs )\n" +
 						"		//this->_value = rhs.getValue();\n" +
 						"	return *this;\n}\n\n" +
 						"std::ostream &		operator<<( std::ostream & o, " + name + " const & i )\n" +
