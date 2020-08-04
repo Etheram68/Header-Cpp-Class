@@ -39,8 +39,8 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
-### 0.2.6
-First letter is upper, other letter is sensitive case
+### 0.2.6 / 0.2.7
+First letter is upper, other letter is sensitive case And modify Template
 
 ### 0.2.3 / 0.2.5
 Modify template for align call function on cpp file

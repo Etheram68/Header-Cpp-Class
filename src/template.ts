@@ -36,7 +36,7 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 						name + "::~" + name + "()\n{\n	std::cout << \"Destructor called\" << std::endl;\n}\n\n" +
 						"\n/*\n** --------------------------------- OVERLOAD ---------------------------------\n*/\n\n" +
 						name + " &				" + name + "::operator=( " + name + " const & rhs )\n{\n	//if ( this != &rhs )\n" +
-						"		//this->_value = rhs.getValue();\n" +
+						"	//{\n		//this->_value = rhs.getValue();\n	//}\n" +
 						"	return *this;\n}\n\n" +
 						"std::ostream &			operator<<( std::ostream & o, " + name + " const & i )\n" +
 						"{\n	//o << \"Value = \" << i.getValue();\n	return o;\n}\n\n" +
@@ -45,7 +45,8 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 
 		let classhpp =	"#ifndef " + name.toUpperCase() + "_CLASS" + "_HPP\n" +
 						"# define " + name.toUpperCase() + "_CLASS" + "_HPP\n\n" +
-						"# include <iostream>\n\n" +
+						"# include <iostream>\n" +
+						"# include <string>\n\n" +
 						"class " + name + "\n{\n" +
 						"\n" +
 						"	public:\n" +
