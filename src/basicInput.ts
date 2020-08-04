@@ -31,7 +31,7 @@ export async function createQuickClass() {
 	});
 
 	if (name !== undefined){
-		name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+		name = name.charAt(0).toUpperCase() + name.slice(1)
 
 		const wsedit = new vscode.WorkspaceEdit();
 		const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
