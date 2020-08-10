@@ -39,6 +39,9 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+### 0.2.8
+Modify Template
+
 ### 0.2.6 / 0.2.7
 First letter is upper, other letter is sensitive case And modify Template
 

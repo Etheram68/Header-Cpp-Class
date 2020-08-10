@@ -36,8 +36,8 @@ export async function createQuickClass() {
 		const wsedit = new vscode.WorkspaceEdit();
 		const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
 
-		const filePathCpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.cpp');
-		const filePathHpp = vscode.Uri.file(wsPath + '/' + name + '.Class' + '.hpp');
+		const filePathCpp = vscode.Uri.file(wsPath + '/' + name + '.cpp');
+		const filePathHpp = vscode.Uri.file(wsPath + '/' + name + '.hpp');
 
 		let command = (vscode.workspace.getConfiguration().get('headercppclass.headerId') as string).trim();
 
