@@ -68,6 +68,45 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 	}
 }
 
+export const getTemplateTpp = ( name: string | undefined, filePathTpp: vscode.Uri ) => {
+	if (name)
+	{
+		let len = name.length;
+		len += 19;
+		len = 80 - len - 1
+		let star = "*"
+		for (; len > 0; len--)
+		{
+			star += "*"
+		}
+
+		let classtpp =	"#ifndef " + name.toUpperCase() + "_TPP\n" +
+						"# define " + name.toUpperCase() + "_TPP\n\n" +
+						"# include <iostream>\n" +
+						"# include <string>\n\n" +
+						"class " + name + "\n{\n" +
+						"\n" +
+						"	public:\n" +
+						"\n" +
+						"		" + name + "() {};\n" +
+						"		" + name + "( " + name + " const & src ) {};\n" +
+						"		~" + name + "() {};\n" +
+						"\n" +
+						"		" + name + " &		operator=( " + name + " const & rhs )\n		{\n			//if ( this != &rhs )\n" +
+						"			//{\n				//this->_value = rhs.getValue();\n			//}\n" +
+						"			return *this;\n		}\n\n" +
+						"\n\n" +
+						"	private:\n\n" +
+						"};\n\n" +
+						"#endif /* *" + star + " " + name.toUpperCase() + "_TPP */";
+
+
+		fs.writeFile(filePathTpp.fsPath, classtpp, function (err: any) { if (err) return console.log(err); });
+
+		vscode.window.showInformationMessage("Files : " + name + ".tpp created !");
+	}
+}
+
 
 export const getTemplateFull = ( name: string, filePathCpp: vscode.Uri, filePathHpp: vscode.Uri, valueArray: Array<string | undefined>, typeArray: Array<string | undefined> ) => {
 	let len = name.length;

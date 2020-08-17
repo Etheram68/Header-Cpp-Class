@@ -13,22 +13,10 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 
-import { getTemplate, getTemplateFull } from './template';
+import { getTemplate, getTemplateFull, getTemplateTpp } from './template';
 import { getHeadercpp, getHeaderhpp } from './header';
 
-export async function createQuickClass() {
-
-	let name = await vscode.window.showInputBox({
-		prompt: "Enter your Class Name",
-		placeHolder: "ClassName",
-		validateInput: (text: string): string | undefined => {
-			if (!text){
-				return 'You must enter a name';
-			} else {
-				return undefined;
-			}
-		}
-	});
+export async function createQuickClass(name: string | undefined) {
 
 	if (name !== undefined){
 		name = name.charAt(0).toUpperCase() + name.slice(1)
@@ -49,6 +37,27 @@ export async function createQuickClass() {
 		getTemplate( name, filePathCpp, filePathHpp );
 		await getHeadercpp( command, filePathCpp );
 		await getHeaderhpp( command, filePathHpp );
+	}
+}
+
+export async function createTemplateFile(name: string | undefined){
+	if (name !== undefined){
+		name = name.charAt(0).toUpperCase() + name.slice(1);
+
+		name = name.substr(0, name.length - 4);
+
+		const wsedit = new vscode.WorkspaceEdit();
+		const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
+
+		const filePathTpp = vscode.Uri.file(wsPath + '/' + name + ".tpp");
+
+		let command = (vscode.workspace.getConfiguration().get('headercppclass.headerId') as string).trim();
+
+		wsedit.createFile(filePathTpp, { ignoreIfExists: true });
+		vscode.workspace.applyEdit(wsedit);
+		
+		getTemplateTpp( name, filePathTpp );
+		await getHeadercpp( command, filePathTpp );
 	}
 }
 /*

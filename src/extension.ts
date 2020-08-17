@@ -11,24 +11,26 @@
 /* ************************************************************************** */
 
 import { window, commands, ExtensionContext } from 'vscode';
-import { createQuickClass } from './basicInput';
+import { createQuickClass, createTemplateFile } from './basicInput';
+import * as vscode from 'vscode';
 
 export function activate(context: ExtensionContext) {
-	context.subscriptions.push(commands.registerCommand('canonicalclass.makeclass', () => {
-		/*const options: { [key: string]: (context: ExtensionContext) => Promise<void> } = {
-			createQuickClass,
-			createClass,
-		};
-		const quickPick = window.createQuickPick();
-		quickPick.items = Object.keys(options).map(label => ({ label }));
-		quickPick.onDidChangeSelection(selection => {
-			if (selection[0]) {
-				options[selection[0].label](context).catch(console.error);
+	context.subscriptions.push(commands.registerCommand('canonicalclass.makeclass', async () => {
+		let name = await vscode.window.showInputBox({
+			prompt: "Enter your Class Name",
+			placeHolder: "ClassName",
+			validateInput: (text: string): string | undefined => {
+				if (!text){
+					return 'You must enter a name';
+				} else {
+					return undefined;
+				}
 			}
 		});
-		quickPick.onDidHide(() => quickPick.dispose());
-		quickPick.show();*/
-		createQuickClass();
+		if (name !== undefined && name.slice(name.length - 4) == ".tpp")
+			createTemplateFile(name);
+		else
+			createQuickClass(name);
 	}));
 }
 
