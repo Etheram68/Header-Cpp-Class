@@ -33,7 +33,7 @@ Enter the Class Name
  src="https://raw.githubusercontent.com/Etheram68/Header-Cpp-Class/master/tuto2.gif"
  width=680>
 
- ### Create file Cpp and Hpp with Header
+ ### Create file Template (.tpp)
   Enter on the box "MyTemplateName.tpp"
 
 ## Issues
@@ -42,7 +42,7 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
-## 0.3.0
+## 0.3.0 / 0.3.1
 Add canonical Class for template (file extension .tpp)
 
 ### 0.2.8

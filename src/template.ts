@@ -84,6 +84,7 @@ export const getTemplateTpp = ( name: string | undefined, filePathTpp: vscode.Ur
 						"# define " + name.toUpperCase() + "_TPP\n\n" +
 						"# include <iostream>\n" +
 						"# include <string>\n\n" +
+						"template < typename T >" +
 						"class " + name + "\n{\n" +
 						"\n" +
 						"	public:\n" +
