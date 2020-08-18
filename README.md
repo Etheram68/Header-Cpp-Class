@@ -42,7 +42,10 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
-## 0.3.0 / 0.3.1
+##  0.3.2
+Modify template for more lisibility and correct error new line
+
+### 0.3.0 / 0.3.1
 Add canonical Class for template (file extension .tpp)
 
 ### 0.2.8

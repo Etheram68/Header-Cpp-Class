@@ -84,19 +84,22 @@ export const getTemplateTpp = ( name: string | undefined, filePathTpp: vscode.Ur
 						"# define " + name.toUpperCase() + "_TPP\n\n" +
 						"# include <iostream>\n" +
 						"# include <string>\n\n" +
-						"template < typename T >" +
+						"template < typename T >\n" +
 						"class " + name + "\n{\n" +
 						"\n" +
 						"	public:\n" +
 						"\n" +
+						"\n	/*\n	** ------------------------------- CONSTRUCTOR --------------------------------\n	*/\n\n" +
 						"		" + name + "() {};\n" +
-						"		" + name + "( " + name + " const & src ) {};\n" +
-						"		~" + name + "() {};\n" +
-						"\n" +
+						"		" + name + "( " + name + " const & src ) {};\n\n" +
+						"\n	/*\n	** -------------------------------- DESTRUCTOR --------------------------------\n	*/\n\n" +
+						"		~" + name + "() {};\n\n" +
+						"\n	/*\n	** --------------------------------- OVERLOAD ---------------------------------\n	*/\n\n" +
 						"		" + name + " &		operator=( " + name + " const & rhs )\n		{\n			//if ( this != &rhs )\n" +
 						"			//{\n				//this->_value = rhs.getValue();\n			//}\n" +
 						"			return *this;\n		}\n\n" +
-						"\n\n" +
+						"\n	/*\n	** --------------------------------- METHODS ----------------------------------\n	*/\n\n" +
+						"\n" +
 						"	private:\n\n" +
 						"};\n\n" +
 						"#endif /* *" + star + " " + name.toUpperCase() + "_TPP */";
