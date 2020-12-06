@@ -42,6 +42,9 @@ To report a bug or ask for a feature, please open a [Github issue](https://githu
 
 ## Release Notes
 
+## 0.3.3
+Add on template line Accessor
+
 ##  0.3.2
 Modify template for more lisibility and correct error new line
 
