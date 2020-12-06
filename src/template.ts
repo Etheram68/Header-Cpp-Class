@@ -38,6 +38,7 @@ export const getTemplate = ( name: string | undefined, filePathCpp: vscode.Uri ,
 						"std::ostream &			operator<<( std::ostream & o, " + name + " const & i )\n" +
 						"{\n	//o << \"Value = \" << i.getValue();\n	return o;\n}\n\n" +
 						"\n/*\n** --------------------------------- METHODS ----------------------------------\n*/\n\n" +
+						"\n/*\n** --------------------------------- ACCESSOR ---------------------------------\n*/\n\n"
 						"\n/* ************************************************************************** */";
 
 		let classhpp =	"#ifndef " + name.toUpperCase() + "_HPP\n" +
